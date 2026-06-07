@@ -13,6 +13,45 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
 
   <style>
+/* Mặc định ẩn lớp phủ cảnh báo trên máy tính hoặc khi màn hình đã xoay ngang */
+#rotate-warning {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1a1a1a; /* Màu nền khi chặn */
+    color: #ffffff;
+    z-index: 99999; /* Đảm bảo luôn nằm trên cùng */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.phone-icon {
+    font-size: 50px;
+    animation: rotate 2s infinite linear;
+    margin-bottom: 20px;
+}
+
+/* Hiệu ứng xoay icon cho sinh động */
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(-90deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Kích hoạt khi màn hình ở CHẾ ĐỘ DỌC (Portrait) trên Điện thoại/Máy tính bảng */
+@media screen and (max-width: 1024px) and (orientation: portrait) {
+    #rotate-warning {
+        display: flex; /* Hiện cảnh báo */
+    }
+    #main-content {
+        display: none; /* Ẩn toàn bộ nội dung web */
+    }
+}
     /* =========================
        Base / Theme
     ========================== */
